@@ -32,9 +32,9 @@ CREATE TABLE `clientes` (
   `id` int(11) NOT NULL,
   `nombre` text COLLATE utf8_spanish_ci NOT NULL,
   `direccion` text COLLATE utf8_spanish_ci NOT NULL,
-  `celular` int(11) NOT NULL,
-  `telefono_fijo` int(11) NOT NULL,
-  `email` text COLLATE utf8_spanish_ci NOT NULL
+  `celular` int(11) NULL,
+  `telefono_fijo` int(11) NULL,
+  `email` text COLLATE utf8_spanish_ci NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -93,7 +93,8 @@ CREATE TABLE `cuotas` (
 CREATE TABLE `cuota_fechas` (
   `id` int(11) NOT NULL,
   `cuota_id` int(11) NOT NULL,
-  `fecha` date NOT NULL
+  `fecha` date NOT NULL,
+  `precio_cuota` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
