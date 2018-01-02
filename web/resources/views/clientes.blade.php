@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div id="actualizar" class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
@@ -15,7 +15,7 @@
                     @endif
                     <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Agregar Cliente</button>
                     <br><br><br>
-                    <div id="actualizar">
+                    <div >
                         <table id='clientes' class="table table-condensed  table-hover">
                             <thead>
                                 <tr>
@@ -96,35 +96,35 @@
 @section('scripts')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}">
 <script>
-    $(document).ready(function(){
-        $('#clientes').dataTable( {
-          "language": {
-            "url": "{{asset('js/spanish.json')}}"
-          }
-        } );
+    var tablaClientes = $('#clientes').DataTable( {
+      "language": {
+        "url": "{{asset('js/spanish.json')}}"
+      }
+    } );
 
-        $('#guardar').click(function(){
-            var form = $('#formClientes');
-            $.ajax({
-                url     : "{{url('/clientes')}}",
-                method  :'POST',
-                data    : form.serialize(),
-                dataType: 'JSON',
-                success : function(result){
-                    if(result.insert){
-                        $('#myModal').modal('hide');
-                        $("#actualizar").load(location.href + " #actualizar");
-                        $('#clientes').dataTable( {
-                          "language": {
-                            "url": "{{url('/')}}/spanish.json"
-                          }
-                        } );
-                    }else{
-                        alert('Error');
-                    }
+    $('#guardar').click(function(){
+        var form = $('#formClientes');
+        $.ajax({
+            url     : "{{url('/clientes')}}",
+            method  :'POST',
+            data    : form.serialize(),
+            dataType: 'JSON',
+            success : function(result){
+                if(result.insert){
+                    $('#myModal').modal('hide');
+                    // $("#actualizar").load(location.href + " #actualizar");
+                    tablaClientes.row.add( [
+                        $('#nombre').val(),
+                        $('#email').val(),
+                        $('#direccion').val(),
+                        $('#telefono').val(),
+                        $('#celular').val()
+                    ] ).draw( false );
+                }else{
+                    alert('Error');
                 }
-            })
-        });
+            }
+        })
     });
 </script>
 @endsection

@@ -12,10 +12,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <style type="text/css">
         body{
-            font-family: 'Roboto Condensed', sans-serif !important;
+            font-family: 'Quicksand', sans-serif !important;
         }
     </style>
 </head>
@@ -81,6 +81,8 @@
     </div>
 
     <!-- Scripts -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/datatables.min.js') }}"></script>
     <script type="text/javascript">

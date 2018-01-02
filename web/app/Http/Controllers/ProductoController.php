@@ -20,7 +20,7 @@ class ProductoController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
        if($request->has('marca')){
             $productos = Producto::with('marca','sexo')
