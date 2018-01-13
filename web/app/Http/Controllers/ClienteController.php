@@ -38,6 +38,14 @@ class ClienteController extends Controller
             'email'         => $request->email
         ];
         return response()->json(['insert' => $cliente->insert($data)]);
-    }  
+    } 
+    public function finalizar(Request $request)
+    {
+        $productos = json_decode($request->data);
+        foreach ($productos as $producto) {
+            $productoModel = Producto::find($producto->idProducto);
+            echo $productoModel->nombre,'<br>';
+        }
+    } 
 }
 

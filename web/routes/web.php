@@ -20,7 +20,9 @@ Route::get('/', 'HomeController@index');
 // Route::get('/pass', 'HomeController@pass');
 // Route::get('/productos', 'HomeController@productos');
 // Route::get('/clientes', 'HomeController@clientes');
-
+Route::prefix('clientes')->group(function () {
+    Route::get('finalizar','ClienteController@finalizar');
+});
 Route::resource('clientes', 'ClienteController');
 Route::resource('productos', 'ProductoController');
 
