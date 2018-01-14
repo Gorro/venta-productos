@@ -9,9 +9,42 @@
 
                     <div class="panel-body">
                         <div id="result">
-                            @foreach($productoModel as $product)
-                                {{$product->nombre}}<br>
-                            @endforeach
+                            <table class="table table-condensed  table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio Venta</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @php
+                                    $total = 0;
+                                @endphp
+                                @foreach($productoModel as $product)
+                                    <tr>
+                                        <td>{{$product['nombre']}}</td>
+                                        <td>{{$product['cantidad']}}</td>
+                                        <td>{{$product['precio']}}</td>
+                                        <td>{{$product['total']}}</td>
+                                    </tr>
+                                    @php
+                                        $total += $product['total'];
+                                    @endphp
+                                @endforeach
+                                <tr style="background-color: #e0e0e0;">
+                                    <th>Total Venta</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>{{$total}}</th>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-xs-12">
+                            <button class="btn btn-primary pull-right">Agregar cuotas</button>
+                            <button class="btn btn-default pull-right" style="margin-right:10px;">Finalizar como pagado</button>
                         </div>
                     </div>
                 </div>

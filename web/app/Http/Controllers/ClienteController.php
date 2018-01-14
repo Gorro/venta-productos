@@ -44,7 +44,14 @@ class ClienteController extends Controller
         $productos = json_decode($request->data);
         $productoModel = [];
         foreach ($productos as $producto) {
-            array_push($productoModel, Producto::find($producto->idProducto));
+            $data = [
+                'id' => $producto->idProducto,
+                'nombre' => Producto::find($producto->idProducto)->nombre,
+                'cantidad' => $producto->cantidad,
+                'precio' => Producto::find($producto->idProducto)->precio_venta,
+                'total' => $producto->cantidad * Producto::find($producto->idProducto)->precio_venta
+            ];
+            array_push($productoModel, $data);
         }
         return view('finalizar_compra', compact('productoModel'));
     } 
