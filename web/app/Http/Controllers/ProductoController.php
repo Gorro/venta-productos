@@ -23,6 +23,7 @@ class ProductoController extends Controller
     public function index(Request $request)
     {
         $cliente = '';
+        $data     = '';
        if($request->has('marca')){
             $productos = Producto::with('marca','sexo')
                         ->whereHas('marca',function($query) use($request){
@@ -36,9 +37,12 @@ class ProductoController extends Controller
         if($request->has('cliente')){
             $cliente = $request->cliente;
         }
+        if($request->has('data')){
+            $data = json_decode($request->data, true);
+        }
         $marcas    = Marca::all();
         $marcas    = $marcas->sortBy('nombre');
-        return view('tablas',compact('productos','marcas','marcaPerfume','cliente'));
+        return view('tablas',compact('productos', 'marcas', 'marcaPerfume', 'cliente', 'data'));
     }   
 }
 

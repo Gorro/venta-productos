@@ -42,10 +42,11 @@ class ClienteController extends Controller
     public function finalizar(Request $request)
     {
         $productos = json_decode($request->data);
+        $productoModel = [];
         foreach ($productos as $producto) {
-            $productoModel = Producto::find($producto->idProducto);
-            echo $productoModel->nombre,'<br>';
+            array_push($productoModel, Producto::find($producto->idProducto));
         }
+        return view('finalizar_compra', compact('productoModel'));
     } 
 }
 
