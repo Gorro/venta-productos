@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-01-2018 a las 23:28:32
+-- Tiempo de generación: 14-01-2018 a las 22:07:46
 -- Versión del servidor: 10.1.28-MariaDB
 -- Versión de PHP: 5.6.32
 
@@ -32,10 +32,18 @@ CREATE TABLE `clientes` (
   `id` int(11) NOT NULL,
   `nombre` text COLLATE utf8_spanish_ci NOT NULL,
   `direccion` text COLLATE utf8_spanish_ci NOT NULL,
-  `celular` int(11) NULL,
-  `telefono_fijo` int(11) NULL,
-  `email` text COLLATE utf8_spanish_ci NULL
+  `celular` int(11) DEFAULT NULL,
+  `telefono_fijo` int(11) DEFAULT NULL,
+  `email` text COLLATE utf8_spanish_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id`, `nombre`, `direccion`, `celular`, `telefono_fijo`, `email`) VALUES
+(1, 'álvaro', 'avenida kenney #677', 981338591, 228216490, 'aastudim@everis.com'),
+(2, 'Ariel y la chet', 'su casa', 123, 123, 'arielito@mail.com');
 
 -- --------------------------------------------------------
 
@@ -1236,7 +1244,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente_productos`
