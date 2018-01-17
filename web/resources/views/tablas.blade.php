@@ -101,48 +101,50 @@
             idProducto   : '',
             idCliente    : '',
             cantidad     : ''
-        },
-        allProducts  : '',
-        agregarProducto : function(idProducto, idCliente, $this){
-            productApp.allProducts = JSON.parse(localStorage.getItem('productArray')) || [];
-            if($this.hasClass('btn-default')){
-                var cantidad = 0;
-                var index = 0;
-                $.each(productApp.allProducts,function(i,item){
-                    if(item.idProducto == idProducto){
-                        cantidad = parseInt(item.cantidad) + 1;
-                        index = i;
-                        return;
-                    }
-                });
-                $this.text('Agregado ('+cantidad+')');
-                productApp.allProducts[index].cantidad = cantidad;
-            }else{
-                $this.removeClass('btn-primary');
-                $this.addClass('btn-default');
-                $this.text('Agregado (1)');
-                productApp.productos.idProducto   = idProducto;
-                productApp.productos.idCliente    = idCliente;
-                productApp.productos.cantidad    = 1;
-                productApp.allProducts.push(productApp.productos);
-            }
+            },
+            allProducts  : '',
+            agregarProducto : function(idProducto, idCliente, $this){
+                productApp.allProducts = JSON.parse(localStorage.getItem('productArray')) || [];
+                if($this.hasClass('btn-default')){
+                    var cantidad = 0;
+                    var index = 0;
+                    $.each(productApp.allProducts,function(i,item){
+                        if(item.idProducto == idProducto){
+                            cantidad = parseInt(item.cantidad) + 1;
+                            index = i;
+                            return;
+                        }
+                    });
+                    $this.text('Agregado ('+cantidad+')');
+                    productApp.allProducts[index].cantidad = cantidad;
+                }else{
+                    $this.removeClass('btn-primary');
+                    $this.addClass('btn-default');
+                    $this.text('Agregado (1)');
+                    productApp.productos.idProducto   = idProducto;
+                    productApp.productos.idCliente    = idCliente;
+                    productApp.productos.cantidad    = 1;
+                    productApp.allProducts.push(productApp.productos);
+                }
 
-            localStorage.setItem('productArray', JSON.stringify(productApp.allProducts));
-        },
-        finalizarVenta : function(){
-            window.localStorage.clear();
-            var url = "{{url('/clientes/finalizar')}}?data="+JSON.stringify(productApp.allProducts) || [];
-            window.location.href = url;
-        },
-        validaSelect : function($this){
-            if($this.val() == ''){
-                $('#btnBuscar').attr('disabled', true);
-            }else{
-                $('#btnBuscar').attr('disabled', false);
+                localStorage.setItem('productArray', JSON.stringify(productApp.allProducts));
+            },
+            finalizarVenta : function(){
+                window.localStorage.clear();
+                var url = "{{url('/clientes/finalizar')}}?data="+JSON.stringify(productApp.allProducts) || [];
+                window.location.href = url;
+            },
+            validaSelect : function($this){
+                if($this.val() == ''){
+                    $('#btnBuscar').attr('disabled', true);
+                }else{
+                    $('#btnBuscar').attr('disabled', false);
+                }
             }
-        }
     }
-    productApp.allProducts = JSON.parse(localStorage.getItem('productArray')) || [];
+    var Productos = backbone.Collections.extend();
+    var productos = new Productos (JSON.parse( localStorage.getItem('productArray' ))) || [];
+    ProductApp.allProducts = JSON.parse(localStorage.getItem('productArray')) || [];
     $('#buscar').submit(function(e){
         $('#data').val(JSON.stringify(productApp.allProducts) || []);
 //        $(this).submit();
