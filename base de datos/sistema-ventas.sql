@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-01-2018 a las 22:07:46
+-- Tiempo de generación: 08-07-2018 a las 22:02:25
 -- Versión del servidor: 10.1.28-MariaDB
 -- Versión de PHP: 5.6.32
 
@@ -1176,7 +1176,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Pedro Astudillo', 'pedroastudillocaneleo@gmail.com', '$2y$10$h9fjkrmf/CQe98/XFxuqqOufYjuwkJnPN1AcFgmHooy7grVzZVsxu', 'uIcdVzgXB0hacIwPJsRnFQ0kxX3BfP7Wc7yO8qMiflTVs65j0WgQT7drrSpr', '2017-12-31 20:30:00', NULL),
-(2, 'Álvaro  Astudillo', 'aastudim@everis.com', '$2y$10$AsOi272ubphlrQQNAsBeTuMigeir5bHky0KPxIBYeSJh5zpi7SxAi', 'FKB1KPCRCrojIroKYXFdu74P3GYmcxLBILq6r5XLW2DrkqWpgGFx2tXegGvF', '2018-01-01 00:10:46', '2018-01-01 00:10:46');
+(2, 'Álvaro  Astudillo', 'aastudim@everis.com', '$2y$10$AsOi272ubphlrQQNAsBeTuMigeir5bHky0KPxIBYeSJh5zpi7SxAi', 'lZufAz5wI7QUfKxKdC15OGGSQ5PerOx2hK7gqrDe5pXiJA39ShmYIaKEvmbw', '2018-01-01 00:10:46', '2018-01-01 00:10:46');
 
 --
 -- Índices para tablas volcadas
